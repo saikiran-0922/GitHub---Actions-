@@ -8,6 +8,16 @@ env:
   AWS_ACCOUNT_ID: 146713998391
   ECR_REPO: my-app
 
+      - name: Build with Maven
+        run: mvn clean package -DskipTests
+      - name: Debug – show files
+        run: |
+          pwd
+          ls -la
+
+      - name: Build with Maven
+        run: mvn -f pom.xml clean package -DskipTests
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
